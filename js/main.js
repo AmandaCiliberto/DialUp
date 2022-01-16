@@ -1,5 +1,16 @@
-//10s timer function
-var timeleft = 10;
+//class phoneGame
+class PhoneGame {
+  constructor(products) {
+    //array of products
+    this.products = products;
+    this.randomPhoneNum = randomPhoneNum;
+    this.tvProduct = tvProduct;
+    this.shoppingListProduct = shoppingListProduct;
+
+  }
+  //10s timer function
+  timer() {
+    var timeleft = 10;
 var downloadTimer = setInterval(function () {
   if (timeleft <= 0) {
     clearInterval(downloadTimer);
@@ -10,6 +21,35 @@ var downloadTimer = setInterval(function () {
   }
   timeleft -= 1;
 }, 1000);
+  }
+  //returns a random product on the tv
+  shuffleProductsTv() {
+    //
+  }
+  //returns a random product on the shopping list
+  shuffleProductsList() {
+    // ...
+  }
+  //checks if the bough product equals the shopping list product
+  checkIfPair(product1, product2) {
+    // ...
+  }
+  //method to check if game is finished (right product && right phone number)
+  checkIfFinished() {
+    // ...
+  }
+}
+
+//starts the game
+//when pressing the startGame button show random products on the tv and shopping list
+function startGame(){
+  //get button from html
+  
+
+  PhoneGame.shuffleProductsTv();
+  PhoneGame.shuffleProductsList();
+}
+
 
 //function to return a random phone number
 Math.floor(100000000 + Math.random() * 900000000);
