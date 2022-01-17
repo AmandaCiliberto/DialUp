@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dial Up Game</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <script src="js/RotaryDial.js"></script>
-    <script src="js/main.js"></script>
     <div id="header">
         <h1>
-            Name of the Game
+            Dial Up
         </h1>
-        <button id="btn-start-game">(START GAME)</button>
+        <button id="btn-start-game">START GAME</button>
     </div>
+    
     <div id="left-panel">
         <div id="shopping-list">
         <h2>Shopping List</h2>
-        <div id="product-image"></div>
-        <div id="tv">
-
+        <div ><img id="product-image"src="../images/fridge.png" alt=""></div>
         </div>
+        <div id="tv"></div>
     </div>
         
     <div id="right-panel">
@@ -32,13 +30,15 @@
                 <p>Click / Touch the disc and drag it until the arrow. 
                     When the number reaches the arrow, it will turn red, then let go and
                     that's your number. When the timer runs out, you’ll call the store. <br>
-                <span style="color: red;">Be careful to not call the wrong number...</span>
+                <span style="color: red;">Be careful! Don't call the wrong number...</span>
              </p>
             </div>
             <div id="timer">
-                <p>Timer:</p>
-                <img src="" alt="">
+                <p>Timer: <br><span> 0s</span></p>
+                <img class="hourglass" src="../images/hourglass.png" alt="hourglass icon">
             </div>
+            <script src="js/RotaryDial.js"></script>
+            <div id="random-phone">43234565</div>
         </div>
     </div>
 </body>

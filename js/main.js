@@ -1,19 +1,20 @@
 //class phoneGame
 class PhoneGame {
-  constructor(products) {
+  constructor() {
     //array of products
-    this.products = products;
-    this.randomPhoneNum = randomPhoneNum;
-    this.tvProduct = tvProduct;
-    this.shoppingListProduct = shoppingListProduct;
-
+    this.products = ['fridge', 'blender', 'vacuum', 'toaster', 'washing machine', 'steam iron', 'lamp', 'air condition'];
+    this.randomPhoneNum = Math.floor(100000000 + Math.random() * 900000000);
+    this.tvProduct = this.products[Math.floor(Math.random() * this.products.length)];
+    console.log(this.tvProduct);
+    this.shopListProduct = this.products[Math.floor(Math.random() * this.products.length)];
+    console.log(this.shopListProduct);
   }
   //10s timer function
   timer() {
     var timeleft = 10;
-var downloadTimer = setInterval(function () {
+var gameTimer = setInterval(function () {
   if (timeleft <= 0) {
-    clearInterval(downloadTimer);
+    clearInterval(gameTimer);
     document.getElementById("countdown").innerHTML = "Finished";
   } else {
     document.getElementById("countdown").innerHTML =
@@ -22,37 +23,35 @@ var downloadTimer = setInterval(function () {
   timeleft -= 1;
 }, 1000);
   }
-  //returns a random product on the tv
-  shuffleProductsTv() {
-    //
-  }
-  //returns a random product on the shopping list
-  shuffleProductsList() {
-    // ...
-  }
-  //checks if the bough product equals the shopping list product
-  checkIfPair(product1, product2) {
-    // ...
-  }
   //method to check if game is finished (right product && right phone number)
-  checkIfFinished() {
+  /*checkIfFinished() {
     // ...
-  }
+  }*/
 }
+
+//start the myGame object (from the class PhoneGame)
+const myGame = new PhoneGame();
+console.log(myGame.timer());
+//get Start Game button from html
+const startGameBtn = document.getElementById("btn-start-game");
+onclick.startGameBtn = startGame();
+
+//store random phone number on the random phone number element from html
+const randomPhone = document.getElementById("random-phone");
+let phoneNum = randomPhone.innerHTML;
+myGame.randomPhoneNum = phoneNum;
 
 //starts the game
 //when pressing the startGame button show random products on the tv and shopping list
 function startGame(){
-  //get button from html
-  
+  console.log("i'm inside the startGame");
 
-  PhoneGame.shuffleProductsTv();
-  PhoneGame.shuffleProductsList();
+
+  myGame.timer();
+  myGame.shuffleProductsTv();
+  myGame.shuffleProductsList();
 }
 
-
-//function to return a random phone number
-Math.floor(100000000 + Math.random() * 900000000);
 
 //create class 'product'
 
