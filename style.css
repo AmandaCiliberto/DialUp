@@ -10,7 +10,7 @@ body {
   	height: 100%;
   	padding: 0;
   	display: flex;
-  	flex-direction: column;
+  	flex-flow: column wrap;
   	margin: 0;
 	width: 100%;
   	height: auto;
@@ -52,18 +52,29 @@ canvas {
 
 #left-panel {
 	display:flex;
-	flex-flow: row nowrap ;
+	flex-flow: row wrap ;
 	justify-content: flex-start;
 	margin-left: 4%;
 	width: 37%;
 }
 
+#left-panel img {
+	width: 100%;
+	position: relative;
+}
+
 #right-panel {
-	display:flex;
-	flex-flow: row wrap ;
 	justify-content: flex-end;
 	margin-left: 4%;
 	width: 37%;
+}
+
+#tv-product {
+	position: absolute;
+	margin-top: 250px;
+	z-index: 1;
+	margin-left: 80px;
+	text-align: center;
 }
 
 #shopping-list {
@@ -82,7 +93,7 @@ canvas {
 	display: flex;
 	align-items: center;
 	padding-left: 8px;
-	padding-right: 55%;
+	padding-right: 30%;
 	margin: 0px;
 }
 
@@ -115,10 +126,10 @@ button {
 	font-weight: bolder;
 	color: #461f7a;
 	box-shadow: 4px 4px 2px #885DBF ;
+	cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
-	canvas{
-		width: 100%;
+canvas{
+		width: 25%;
 	}
-}
+
