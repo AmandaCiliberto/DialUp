@@ -1,45 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Poppins:wght@100;200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Neonderthaw&family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
 	--yellow: #E1BB32;
-	--purple: #B28AE5;
+	--purple: #b284ee;
 	--light-grey: rgb(221, 221, 221);
+	--dark-grey: rgb(46, 46, 46);
 }
 
 body {
   	height: 100%;
   	padding: 0;
   	display: flex;
-  	flex-flow: column wrap;
+  	flex-flow: row wrap;
   	margin: 0;
 	width: 100%;
   	height: auto;
 	background-image: url(../images/background.png);
 	font-family: 'Poppins', sans-serif;
+	font-size: 16px;
 }
+
+h1{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-left: auto;
+	font-family: 'Neonderthaw', cursive;
+	font-size: 4em;
+	font-weight: 100;
+	color: var(--yellow);
+	text-shadow: 4px 6px 10px #3b2f0c, 1px 1px 4px #f5c753;
+	margin-bottom: 12px;
+	margin-top: 12px;
+}
+
 #header {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	align-items: center;
  	width: 100%;
-	margin-top: 0;
 }
 
 #product-image {
 	width: 50px;
 }
 
-h1{
-	width: 48%;
-	margin-left: auto;
-	margin-top: 24px !important;
-	font-family: 'Neonderthaw', cursive;
-	font-size: 4em;
-	font-weight: 100;
-	color: var(--yellow);
-	text-shadow: 4px 6px 10px #3b2f0c, 1px 1px 4px #f5c753;
+#tv {
+	position: relative;
 }
+
+#change-channel {
+	position: absolute;
+	z-index: 1 ;
+	width: 5%;
+	height: auto;
+	margin-top: -8%;
+	margin-left: 29%;
+	transform: rotate(90deg);
+	border-style: none;
+	background-color: #A7925B;
+	cursor: pointer;
+}
+
+
+#change-channel:hover{
+	background-color: var(--yellow);
+}
+
+#channel-btns {
+	display: flex;
+	margin-bottom: 40px;
+	justify-content: center;
+	align-items: center;
+}
+
+#btn-start-game {
+	z-index: 1;
+	position: absolute;
+	width: 150px;
+	height: 3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--yellow);
+	border-style: none;
+	border-radius: 20px;
+	margin-left: -60px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bolder;
+	color: #461f7a;
+	box-shadow: 4px 4px 2px #885DBF ;
+	cursor: pointer;
+}
+
+
 
 canvas {
     border: 1px solid red;
@@ -59,6 +114,9 @@ canvas {
 }
 
 #left-panel img {
+	display:flex;
+	justify-content: center;
+	align-items: center;
 	width: 100%;
 	position: relative;
 }
@@ -69,11 +127,87 @@ canvas {
 	width: 37%;
 }
 
+#instructions {
+	position: absolute;
+	width: 40%;
+	font-size: 0.8em;
+	line-height: 24px;
+}
+
+#instructions ol {
+	font-size: 1.4em;
+	color: var(--dark-grey);
+}
+
+#random-phone {
+	position: absolute;
+	display: flex-start;
+	font-weight: 600;
+	text-align: left;
+	z-index: 1;
+	padding-left: 12px;
+	font-size: 1.2em;
+	width: 60%;
+}
+
+p#random-phone {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: row;
+	margin-top: 220px;
+	width: 35%;
+	padding-left: 24px;
+}
+
+span#r-num {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: left;
+	align-items: left;
+	width: 100%;
+	padding-top: 24px;
+	font-size: 0.9em;
+}
+
+#instructions span {
+	font-weight: 400;
+}
+
+#instructions h3 {
+	font-size: 2em;
+	font-weight: 500;
+	color:var(--dark-grey);
+}
+
+#instructions-timer h4 {
+	position: absolute;
+	margin-top: 20%;
+	margin-left: 40%;
+	text-align: center;
+	font-weight: 700;
+}
+
+#timer {
+	position: absolute;
+	flex-direction: flex-end;
+	margin-left: 45%;
+}
+
+#timer p {
+	font-weight: 700;
+	font-size: 0.8em;
+}
+
+#timer p span {
+	font-size: 2em;
+}
+
 #tv-product {
 	position: absolute;
-	margin-top: 250px;
+	margin-top: 290px;
 	z-index: 1;
-	margin-left: 80px;
+	margin-left: 12%;
 	text-align: center;
 }
 
@@ -86,7 +220,8 @@ canvas {
 	margin-top: 24px;
 	margin-bottom: 24px;
 	border-radius:8px;
-	background-color:  var(--light-grey);
+	background-color:  rgba(255, 255, 255, 0.3);
+	border: 5px solid var(--yellow);
 }
 
 #shopping-list h2 {
@@ -95,8 +230,18 @@ canvas {
 	padding-left: 8px;
 	padding-right: 30%;
 	margin: 0px;
+	font-weight: 500;
 }
 
+.input-field {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-direction: row wrap;
+	width: 50%;
+	height: 50%;
+	background-color: red;
+}
 
 input {
 	width: 300px;
@@ -110,23 +255,6 @@ button {
 	height: 4em;
 	margin-left: 0.5em;
 	box-sizing: border-box;
-}
-
-#btn-start-game {
-	width: 150px !important;
-	height: 3em !important;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--yellow);
-	border-style: none;
-	border-radius: 20px;
-	margin-right: 24px;
-	font-family: 'Poppins', sans-serif;
-	font-weight: bolder;
-	color: #461f7a;
-	box-shadow: 4px 4px 2px #885DBF ;
-	cursor: pointer;
 }
 
 canvas{

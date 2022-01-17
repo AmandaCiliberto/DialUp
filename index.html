@@ -12,7 +12,6 @@
         <h1>
             Dial Up
         </h1>
-        <button id="btn-start-game">START GAME</button>
     </div>
     
     <div id="left-panel">
@@ -21,24 +20,30 @@
         <p id="shopProduct"><!--<img id="product-image"src="random" alt="">--></p>
         </div>
         <p id="tv-product"><!--<img id="product-image"src="random" alt="">--></p>
-        <div id="tv"><img src="../images/tv.png" alt="retro ctr tv"></div>
+        <p id="random-phone"><br><span id="r-num"></span><!--<img id="product-image"src="random" alt="">--></p>
+        <div id="channel-btns">
+            <button id="change-channel"><img src="../images/channelUp.png" alt="change channel up"></button> 
+            <button id="btn-start-game">NEW GAME</button>
+            <img id="tv" src="../images/tv-off.png" alt="retro ctr tv">
+        </div>
     </div>
         
     <div id="right-panel">
         <div id="instructions-timer">
             <div id="instructions">
-                <h3>Instructions</h3>
-                <p>Click / Touch the disc and drag it until the arrow. 
-                    When the number reaches the arrow, it will turn red, then let go and
-                    that's your number. When the timer runs out, you’ll call the store. <br>
-                <span style="color: red;">Be careful! Don't call the wrong number...</span>
-             </p>
+                <h3>Game Instructions</h3>
+                <ol>
+                    <li>Buy the product on your shopping list.</li>
+                    <li>Change channels on the TV to find the right product.</li>
+                    <li>Turn the phone dial to choose a number.</li>
+                    <li>Buy the right product before the timer runs out!</li>
+                    <li>Be careful! Don't call the wrong number...</li>
+                </ol>
             </div>
             <div id="timer">
-                <p>Timer: <br><span> 0s</span></p>
+                <p>Timer: <br><span id="time-left"> 0s</span></p>
                 <img class="hourglass" src="../images/hourglass.png" alt="hourglass icon">
             </div>
-            <div id="random-phone">43234565</div>
         </div>
     </div>
     <script src="/js/RotaryDial.js"></script>
