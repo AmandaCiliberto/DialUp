@@ -13,7 +13,7 @@ class PhoneGame {
 
 //10s timer function
 const timer = function() {
-    var timeleft = 5;
+    var timeleft = 30;
 var gameTimer = setInterval(function () {
   if (timeleft <= 0) {
     clearInterval(gameTimer);
@@ -40,7 +40,7 @@ var gameTimer = setInterval(function () {
 return timeleft;
   };
 
-function getResult() {
+const getResult = function() {
   console.log('im inside getResult');
   if (
     document.getElementById("chosenNum").value === this.randomPhoneNum &&
@@ -132,7 +132,7 @@ let startGameBtn = document.getElementById("btn-start-game");
 startGameBtn.addEventListener("click", startGame);
 
   //starts the game
-  function startGame(){
+  function startGame(getResult){
     //make the button dissappear once the game starts
     document.getElementById("btn-start-game").style.visibility = 'hidden';
     console.log("i'm inside the startGame");
@@ -150,18 +150,16 @@ startGameBtn.addEventListener("click", startGame);
     randomPhone.textContent = 'Call Now! ' + myGame.randomPhoneNum;
 
     //when pressing up or down channel changes products on tv
-    const channelUpBtn = document.getElementById("change-channel");
-    channelUpBtn.addEventListener("click", changeChannel);
+    const channelBtn = document.getElementById("change-channel");
+    channelBtn.addEventListener("click", changeChannel);
 
     //starts the timer
     timer();
+
+    //gets the result - calls the callback function
+    getResult;
+
+
   }
-
-
-//create class 'product'
-
-//create objects inside the class for each product(?)
-
-//get two random objects, one for tv one for shopping list
 
 

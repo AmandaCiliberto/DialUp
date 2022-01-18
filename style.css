@@ -94,6 +94,9 @@ h1{
 	cursor: pointer;
 }
 
+#btn-start-game:hover {
+	background-color: #aa8c1f;
+}
 
 
 canvas {
