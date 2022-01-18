@@ -18,9 +18,11 @@ class PhoneGame {
       "air condition",
     ];
     this.randomPhoneNum = Math.floor(10000000 + Math.random() * 90000000);
-    this.shopListProduct = this.products[Math.floor(Math.random() * this.products.length)];
+    this.shopListProduct =
+      this.products[Math.floor(Math.random() * this.products.length)];
     console.log(this.shopListProduct);
-    this.tvProduct = this.products[Math.floor(Math.random() * this.products.length)];
+    this.tvProduct =
+      this.products[Math.floor(Math.random() * this.products.length)];
     console.log(this.tvProduct);
   }
 }
@@ -30,7 +32,7 @@ const myGame = new PhoneGame();
 
 //10s timer function
 const timer = function () {
-  var timeleft = 35;
+  var timeleft = 10;
   var gameTimer = setInterval(function () {
     if (timeleft <= 0) {
       clearInterval(gameTimer);
@@ -42,6 +44,18 @@ const timer = function () {
       tv.src = "../images/tv-off.png";
       //get result
       getResult();
+
+      //reset shopProduct
+      shopProduct.textContent = "";
+      //reset tv product
+      productTv.textContent = '';
+      //reset random phone number
+      randomPhone.textContent = '';
+      //reset input value
+      document.querySelector("input").value = null;
+
+      //run Start game again if pressing 'start game' button
+      startGameBtn.addEventListener("click", startGame);
     } else {
       document.getElementById("time-left").innerHTML = timeleft + "s";
     }
@@ -72,19 +86,19 @@ const getResult = function () {
     console.log(myProduct);
     console.log(storeProduct);
     alert("You lost! You bought the wrong product! Try again!");
-  } else if (chosenNum !== randomNo && myProduct !== storeProduct) {
-    console.log(randomNo);
-    console.log(chosenNum);
-    console.log(myProduct);
-    console.log(storeProduct);
-    alert("You lost! You called the wrong number!");
   } else if (chosenNum !== randomNo && myProduct === storeProduct) {
     console.log(randomNo);
     console.log(chosenNum);
     console.log(myProduct);
     console.log(storeProduct);
     alert("You lost! You had the right product but the wrong number!");
-  }
+  } else if (chosenNum !== randomNo && myProduct !== storeProduct) {
+    console.log(randomNo);
+    console.log(chosenNum);
+    console.log(myProduct);
+    console.log(storeProduct);
+    alert("You lost! You called the wrong number and got the wrong product!");
+  } 
 };
 
 //initialize rotary dial
@@ -140,7 +154,6 @@ let changeChannel = function () {
   return productTv.textContent;
 };
 
-
 //get Start Game button from html
 let startGameBtn = document.getElementById("btn-start-game");
 startGameBtn.addEventListener("click", startGame);
@@ -166,7 +179,6 @@ function startGame(getResult) {
   const channelBtn = document.getElementById("change-channel");
   channelBtn.addEventListener("click", changeChannel);
 
-  console.log("Product Tv after change channel " + productTv.textContent);
   //starts the timer
   timer();
 
