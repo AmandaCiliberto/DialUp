@@ -12,6 +12,7 @@
         <h1>
             Dial Up
         </h1>
+        <p>Points: <span id="points">0</span></p>
     </div>
     
     <div id="left-panel">
@@ -39,7 +40,7 @@
                 </ol>
             </div>
             <div id="timer">
-                <p>Timer: <br><span id="time-left"> 0s</span></p>
+                <p>Timer: <br><span id="time-left"> 0</span></p>
                 <img class="hourglass" src="https://amandaciliberto.github.io/DialUp/images/hourglass.png" alt="hourglass icon">
             </div>
         </div>
@@ -49,5 +50,11 @@
     <script src="/js/RotaryDial.js"></script>
     <script src="/js/main.js"></script>
     
+    <div id="popUp-container">
+        <div id="pop-up">
+            <img id="close" src="../images/close.png" alt="close icon">
+            <p id="result-text"></p>
+        </div>
+    </div>
 </body>
 </html>

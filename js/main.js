@@ -3,7 +3,18 @@ let productTv = document.getElementById("tv-product");
 //get html element for randomPhone number
 const randomPhone = document.getElementById("r-num");
 //variable to store points
-//let points = 0;
+let totalPoints = document.getElementById("points");
+//get 'cal now' button
+const callNow = document.getElementById("call-now");
+//get pop up html
+const modal = document.getElementById("popUp-container");
+
+//variables
+let randomNo;
+let chosenNum;
+let myProduct;
+let storeProduct;
+let gameTimer;
 
 //class phoneGame
 class PhoneGame {
@@ -34,9 +45,9 @@ const myGame = new PhoneGame();
 
 //10s timer function
 const timer = function () {
-  var timeleft = 30;
-  var gameTimer = setInterval(function () {
-    if (timeleft <= 0) {
+  var timeleft = 15;
+  gameTimer = setInterval(function () {
+    if (timeleft < 0) {
       clearInterval(gameTimer);
       document.getElementById("time-left").innerHTML = "Time Out!";
       startGameBtn.textContent = "NEW GAME";
@@ -47,11 +58,6 @@ const timer = function () {
         "https://amandaciliberto.github.io/DialUp/images/tv-off.png";
       //get result
       getResult();
-      // points calculation
-      //--------------------
-
-
-      
       //reset shopProduct
       shopProduct.textContent = "";
       //reset tv product
@@ -63,7 +69,7 @@ const timer = function () {
       //run Start game again by pressing 'start game' button
       startGameBtn.addEventListener("click", startGame);
     } else {
-      document.getElementById("time-left").innerHTML = timeleft + "s";
+      document.getElementById("time-left").innerHTML = timeleft;
     }
     timeleft -= 1;
   }, 1000);
@@ -73,20 +79,20 @@ const timer = function () {
 //gets the result for the game end
 const getResult = function () {
   console.log("im inside getResult");
-  const chosenNum = parseInt(document.getElementById("chosenNum").value);
-  console.log(typeof(chosenNum));
-  const randomNo = myGame.randomPhoneNum;
-  const myProduct = myGame.shopListProduct;
-  const storeProduct = productTv.textContent;
+  chosenNum = parseInt(document.getElementById("chosenNum").value);
+  randomNo = myGame.randomPhoneNum;
+  myProduct = myGame.shopListProduct;
+  storeProduct = productTv.textContent;
 
   if (!chosenNum) {
-    console.log("Please input a number on the phone");
-    console.log("inputted number: " + chosenNum);
+    alert("Please input a number on the phone");
   } else if (chosenNum === randomNo && myProduct === storeProduct) {
     console.log("random number" + randomNo);
     console.log(chosenNum);
     console.log(myProduct);
     console.log(storeProduct + "test");
+    //click the button to get  timeleft
+    totalPoints.textContent = (parseInt(totalPoints.textContent)) + 1;
     alert("You won! You called the right number and got the right product");
   } else if (chosenNum === randomNo && myProduct !== storeProduct) {
     console.log(randomNo);
@@ -107,6 +113,63 @@ const getResult = function () {
     console.log(storeProduct);
     alert("You lost! You called the wrong number and got the wrong product!");
   } 
+  return chosenNum, randomNo, myProduct, storeProduct;
+};
+
+/* let calling = function(){
+
+} */
+
+//gets time left and store it as points
+let callStore = function(){
+  //if winning - add points
+  if (chosenNum === randomNo && myProduct === storeProduct) {
+    //click the button to get  timeleft
+    totalPoints.textContent = parseInt(totalPoints.textContent) + parseInt(document.getElementById("time-left").textContent);
+    //alert
+    alert("You won! You called the right number and got the right product");
+    //stop game
+    //stop the timer
+    clearInterval(gameTimer);
+    document.getElementById("time-left").innerHTML = "Calling...";
+    startGameBtn.textContent = "NEW GAME";
+    document.getElementById("btn-start-game").style.visibility = "visible";
+    //turn tv off
+    let tv = document.getElementById("tv");
+    tv.src = "https://amandaciliberto.github.io/DialUp/images/tv-off.png";
+    //reset shopProduct
+    shopProduct.textContent = "";
+    //reset tv product
+    productTv.textContent = "";
+    //reset random phone number
+    randomPhone.textContent = "";
+    //reset input value
+    document.getElementById("chosenNum").value = null;
+    //run Start game again by pressing 'start game' button
+    startGameBtn.addEventListener("click", startGame);
+  } else {
+    //stop game
+    //stop the timer
+    clearInterval(gameTimer);
+    document.getElementById("time-left").innerHTML = "Calling...";
+    startGameBtn.textContent = "NEW GAME";
+    document.getElementById("btn-start-game").style.visibility = "visible";
+    //turn tv off
+    let tv = document.getElementById("tv");
+    tv.src = "https://amandaciliberto.github.io/DialUp/images/tv-off.png";
+    //get result
+    getResult();
+    //reset shopProduct
+    shopProduct.textContent = "";
+    //reset tv product
+    productTv.textContent = "";
+    //reset random phone number
+    randomPhone.textContent = "";
+    //reset input value
+    document.getElementById("chosenNum").value = null;
+    //run Start game again by pressing 'start game' button
+    startGameBtn.addEventListener("click", startGame);
+  }
 };
 
 //initialize rotary dial
@@ -169,7 +232,9 @@ let startGameBtn = document.getElementById("btn-start-game");
 startGameBtn.addEventListener("click", startGame);
 
 //starts the game
-function startGame(getResult) {
+function startGame() {
+  //starts the timer
+  timer();
   //make the button dissappear once the game starts
   document.getElementById("btn-start-game").style.visibility = "hidden";
   console.log("i'm inside the startGame");
@@ -184,14 +249,10 @@ function startGame(getResult) {
   console.log("Product Tv " + productTv.textContent);
   //show randomPhone num
   randomPhone.textContent = "Call Now! " + myGame.randomPhoneNum;
-
   //when pressing up or down channel changes products on tv
   const channelBtn = document.getElementById("change-channel");
   channelBtn.addEventListener("click", changeChannel);
-
-  //starts the timer
-  timer();
-
-  //gets the result - calls the callback function
-  getResult;
+  //call now button listener
+  const callBtn = document.getElementById("call-now");
+  callBtn.addEventListener("click", callStore);
 }
