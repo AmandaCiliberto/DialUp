@@ -16,15 +16,15 @@ class RotaryDial {
 
     this.size = this.canvasSize - 2;
 
-    this.discFillColor = discFillColor || "transparent";
+    this.discFillColor = discFillColor || "#f5c753";
 
-    this.discStrokeColor = discStrokeColor || "black";
+    this.discStrokeColor = discStrokeColor || "#3b2f0c";
 
-    this.circlesFillColor = circlesFillColor || "black";
+    this.circlesFillColor = circlesFillColor || "rgba(0, 0, 0, 0.70)";
 
     this.circlesStrokeColor = circlesStrokeColor || "transparent";
 
-    this.circlesHighlightColor = circlesHighlightColor || "red";
+    this.circlesHighlightColor = circlesHighlightColor || "#b284ee";
 
     this.textFillColor = textFillColor || "white";
 
@@ -54,7 +54,7 @@ class RotaryDial {
 
     this.c = this.canvas.getContext("2d");
 
-    this.c.font = this.size * 0.08 + "px Arial";
+    this.c.font = this.size * 0.08 + "px Serif";
 
     this.c.textAlign = "center";
 

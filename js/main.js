@@ -2,6 +2,8 @@
 let productTv = document.getElementById("tv-product");
 //get html element for randomPhone number
 const randomPhone = document.getElementById("r-num");
+//variable to store points
+//let points = 0;
 
 //class phoneGame
 class PhoneGame {
@@ -25,7 +27,7 @@ class PhoneGame {
       this.products[Math.floor(Math.random() * this.products.length)];
     console.log(this.tvProduct);
   }
-}
+};
 
 //start the myGame object (from the class PhoneGame)
 const myGame = new PhoneGame();
@@ -41,10 +43,15 @@ const timer = function () {
       document.getElementById("btn-start-game").style.visibility = "visible";
       //turn tv off
       let tv = document.getElementById("tv");
-      tv.src = "../images/tv-off.png";
+      tv.src =
+        "https://amandaciliberto.github.io/DialUp/images/tv-off.png";
       //get result
       getResult();
+      // points calculation
+      //--------------------
 
+
+      
       //reset shopProduct
       shopProduct.textContent = "";
       //reset tv product
@@ -53,8 +60,7 @@ const timer = function () {
       randomPhone.textContent = '';
       //reset input value
       document.querySelector("input").value = null;
-
-      //run Start game again if pressing 'start game' button
+      //run Start game again by pressing 'start game' button
       startGameBtn.addEventListener("click", startGame);
     } else {
       document.getElementById("time-left").innerHTML = timeleft + "s";
@@ -165,7 +171,7 @@ function startGame(getResult) {
   console.log("i'm inside the startGame");
   //turn on tv
   let tv = document.getElementById("tv");
-  tv.src = "../images/tv.png";
+  tv.src = "https://amandaciliberto.github.io/DialUp/images/tv.png";
   //show shopping list product
   let shopProduct = document.getElementById("shopProduct");
   shopProduct.textContent = myGame.shopListProduct;

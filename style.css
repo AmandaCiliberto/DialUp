@@ -127,18 +127,21 @@ canvas {
 #right-panel {
 	justify-content: flex-end;
 	margin-left: 4%;
-	width: 37%;
+	padding-right: 2%;
+	width: 53%;
+	height: 10em;
 }
 
 #instructions {
 	position: absolute;
 	width: 40%;
-	font-size: 0.8em;
-	line-height: 24px;
+	font-size: 0.67em;
+	line-height: 19px;
 }
 
 #instructions ol {
 	font-size: 1.4em;
+	margin-top: 4px;
 	color: var(--dark-grey);
 }
 
@@ -178,9 +181,12 @@ span#r-num {
 }
 
 #instructions h3 {
-	font-size: 2em;
-	font-weight: 500;
-	color:var(--dark-grey);
+	font-size: 1.5em;
+	padding-left: 24px;
+	padding-top: 6px;
+	margin-bottom: 0;
+	font-weight: 600;
+	color: black;
 }
 
 #instructions-timer h4 {
@@ -240,22 +246,27 @@ span#r-num {
 	position: relative;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	flex-direction: row wrap;
-	width: 50%;
-	height: 50%;
+	width: 250px;
+	height: 40px;
 	background-color: red;
+	margin-left: 50%;
+	margin-top: -40%;
 }
 
 input {
-	width: 300px;
-	height: 4em;
-	padding-left: 0.5em;
+	
+	display: flex;
+	justify-content: left;
+	height: 2.5em;
+	padding: 0.5em;
 	box-sizing: border-box;
 }
 
 button {
-	width: 50px;
-	height: 4em;
+	width: 60px;
+	height: 2.5em;
 	margin-left: 0.5em;
 	box-sizing: border-box;
 }
