@@ -34,7 +34,7 @@ const myGame = new PhoneGame();
 
 //10s timer function
 const timer = function () {
-  var timeleft = 10;
+  var timeleft = 30;
   var gameTimer = setInterval(function () {
     if (timeleft <= 0) {
       clearInterval(gameTimer);
@@ -59,7 +59,7 @@ const timer = function () {
       //reset random phone number
       randomPhone.textContent = '';
       //reset input value
-      document.querySelector("input").value = null;
+      document.getElementById("chosenNum").value = null;
       //run Start game again by pressing 'start game' button
       startGameBtn.addEventListener("click", startGame);
     } else {
@@ -73,13 +73,15 @@ const timer = function () {
 //gets the result for the game end
 const getResult = function () {
   console.log("im inside getResult");
-  const chosenNum = parseInt(document.querySelector("input").value);
+  const chosenNum = parseInt(document.getElementById("chosenNum").value);
+  console.log(typeof(chosenNum));
   const randomNo = myGame.randomPhoneNum;
   const myProduct = myGame.shopListProduct;
   const storeProduct = productTv.textContent;
 
   if (!chosenNum) {
     console.log("Please input a number on the phone");
+    console.log("inputted number: " + chosenNum);
   } else if (chosenNum === randomNo && myProduct === storeProduct) {
     console.log("random number" + randomNo);
     console.log(chosenNum);
@@ -115,8 +117,10 @@ const init = function () {
 
   const input = document.createElement("input");
 
+  input.setAttribute("placeholder", "Phone Number...");
+  
   input.setAttribute("id", "chosenNum");
-
+  
   const btn = document.createElement("button");
 
   btn.innerText = "Clear";

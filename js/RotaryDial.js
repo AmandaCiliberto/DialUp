@@ -16,9 +16,9 @@ class RotaryDial {
 
     this.size = this.canvasSize - 2;
 
-    this.discFillColor = discFillColor || "#f5c753";
+    this.discFillColor = discFillColor || "rgba(250, 213, 82, 0.69)";
 
-    this.discStrokeColor = discStrokeColor || "#3b2f0c";
+    this.discStrokeColor = discStrokeColor || "transparent";
 
     this.circlesFillColor = circlesFillColor || "rgba(0, 0, 0, 0.70)";
 
