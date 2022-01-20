@@ -55,28 +55,22 @@ h1{
 }
 
 #change-channel {
+	display:flex;
+	justify-content: center;
 	position: absolute;
-	z-index: 2 ;
-	height: auto;
-	width: 5%;
-	margin-top: -12%;
-	margin-left: 30%;
+	margin-left: 30vw;
+	z-index: 1;
+	margin-bottom: 200px; 
+	height: 48px;
+	width: 48px;
 	transform: rotate(90deg);
 	border-style: none;
 	background-color: #A7925B;
 	cursor: pointer;
 } 
 
-
 #change-channel:hover{
 	background-color: var(--yellow);
-}
-
-#channel-btns {
-	display: flex;
-	margin-bottom: 40px;
-	justify-content: center;
-	align-items: center;
 }
 
 #btn-start-game {
@@ -96,12 +90,12 @@ h1{
 	color: #461f7a;
 	box-shadow: 4px 4px 2px #885DBF ;
 	cursor: pointer;
+	margin-top: -36px;
 }
 
 #btn-start-game:hover {
 	background-color: #aa8c1f;
 }
-
 
 canvas {
     border: 1px solid red;
@@ -158,28 +152,18 @@ canvas {
 }
 
 #random-phone {
-	position: relative;
+	position: absolute;
 	font-weight: 500;
 	text-align: left;
 	font-size: 1.6em;
 	font-family: 'Poppins', sans-serif;
-	width: 30%; 
-	height: 100%;
-	margin-top: 16% !important;
-	margin-left: -43%;
+	width: 20%; 
+	height: 70%;
+	margin-top: 160px;
+	margin-left: -10%;
 	z-index: 2;
 	line-height: 32px;
 }
-
-span#r-num {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: left;
-	align-items: left;
-	width: 100%;
-	padding-top: 0px;
-	font-size: 0.9em;
-} 
 
 #instructions span {
 	font-weight: 400;
@@ -232,11 +216,11 @@ span#r-num {
 	justify-content: center;
 	align-items: center;
 	background-image: url("https://amandaciliberto.github.io/DialUp/images/tv-off.png");
-	background-size: cover;
-	width: 100% !important;
-	height: 66%;
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 2000px;
+	height: 400px;
 	z-index: 1;
-	margin-top: 0%;
 }
 
 #tv-product {
@@ -245,7 +229,7 @@ span#r-num {
 	width: 10%;
 	position: absolute;
 	text-align: center;
-	margin-top: 2%;
+	margin-top: 10px;
 }
 
 #shopProduct {
@@ -263,7 +247,7 @@ span#r-num {
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	padding: 12px;
-	margin-top: 36px;
+	margin-top: 20px;
 	height: 15%;
 	margin-bottom: 24px;
 	border-radius:8px;
@@ -289,7 +273,7 @@ span#r-num {
 	width: 30%;
 	height: 40px;
 	margin-left: 46.6%;
-	margin-top: 16%;
+	margin-top: 250px;
 }
 
 input {
@@ -332,7 +316,7 @@ canvas{
 	align-items: center;
 	flex-direction: row wrap;
 	margin-left: 47%;
-	margin-top: 20%;
+	margin-top: 300px;
 	width: 25%;
 	border-color: transparent;
 }
@@ -381,5 +365,16 @@ canvas{
 #pop-up button:hover {
 	background-color: #7652a5;
 	color: var(--yellow);
+}
+
+#result-text {
+	text-align: center;
+	padding: 24px 40px;
+	line-height: 32px;
+	font-size: 1.2em;
+}
+
+#try-again {
+	margin-bottom: 40px;
 }
 

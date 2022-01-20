@@ -1,12 +1,11 @@
-//get html element for randomPhone number
+//dom elements
+//get html for randomPhone number
 const randomPhone = document.getElementById("r-num");
 //variable to store points
 let totalPoints = document.getElementById("points");
 //get 'cal now' button
 const callNow = document.getElementById("call-now");
-/* //get pop up html
-const modal = document.getElementById("popUp-container"); */
-//shopping list product
+//get shop list product
 let shopProduct = document.getElementById("shopProduct");
 //get html element for tv product
 let productTv = document.getElementById("tv-product");
@@ -14,15 +13,17 @@ let productTv = document.getElementById("tv-product");
 let finalResult = document.getElementById("result-text");
 //try again button
 let tryAgain = document.getElementById("try-again");
+//get tv element
+let tv = document.getElementById("tv-container");
 
-// sound
+// sound effects
 let mainSong = new Audio("https://amandaciliberto.github.io/DialUp/sound/main-song.mp3"); 
 let clicking = new Audio("https://amandaciliberto.github.io/DialUp/sound/btnClick.mp3");
 let lose = new Audio("https://amandaciliberto.github.io/DialUp/sound/lose.mp3");
 let win = new Audio("https://amandaciliberto.github.io/DialUp/sound/win.mp3");
 let calling = new Audio("https://amandaciliberto.github.io/DialUp/sound/calling.mp3");
 
-//variables
+//variables for win condition
 let randomNo;
 let chosenNum;
 let myProduct;
@@ -60,17 +61,14 @@ class PhoneGame {
     products[7] = new Image();
     products[7].src = "https://amandaciliberto.github.io/DialUp/images/airCon.png";
 
-    console.log(this.products);
     this.randomPhoneNum = Math.floor(10000000 + Math.random() * 90000000);
     this.shopListProduct = this.products[Math.floor(Math.random() * this.products.length)];
-    console.log(this.shopListProduct);
     this.tvProduct = this.products[Math.floor(Math.random() * this.products.length)];
-    console.log(this.tvProduct);
   }
 }
 
 //start the myGame object (from the class PhoneGame)
-const myGame = new PhoneGame();
+let myGame;
 
 function hidePopUp() {
   document.getElementById("popUp-container").style.visibility = "hidden";
@@ -90,10 +88,6 @@ const timer = function () {
       tv.style.backgroundImage = "url('https://amandaciliberto.github.io/DialUp/images/tv-off.png')";
       //get result
       getResult();
-      //reset shopProduct
-      //shopProduct.src = "";
-      //reset tv product
-      //productTv.src = "";
       //reset random phone number
       randomPhone.textContent = "";
       //reset input value
@@ -110,7 +104,6 @@ const timer = function () {
 
 //gets the result for the game end
 const getResult = function () {
-  console.log("im inside getResult");
   chosenNum = parseInt(document.getElementById("chosenNum").value);
   randomNo = myGame.randomPhoneNum;
   myProduct = myGame.shopListProduct.src;
@@ -119,58 +112,45 @@ const getResult = function () {
   if (!chosenNum) {
     alert("Please input a number on the phone");
   } else if (chosenNum === randomNo && myProduct === storeProduct) {
-    console.log("random number" + randomNo);
-    console.log(chosenNum);
-    console.log(myProduct);
-    console.log(storeProduct);
     //click the button to get  timeleft
     totalPoints.textContent = parseInt(totalPoints.textContent) + 1;
+    //show points on pop up
+    document.getElementById("pop-points").textContent = totalPoints.textContent;
     //set visibility of pup up to visible
     document.getElementById("popUp-container").style.visibility = "visible";
-    finalResult.innerHTML = "You won! You called the right number and got the right product";
+    finalResult.innerHTML = "You won! <br>You called the right number and got the right product";
     win.play();
-    tryAgain.addEventListener("click", startGame);
+    tryAgain.innerText = 'Next Game';
+    tryAgain.addEventListener("click", hidePopUp);
   } else if (chosenNum === randomNo && myProduct !== storeProduct) {
     lose.play();
-    console.log(randomNo);
-    console.log(chosenNum);
-    console.log(myProduct);
-    console.log(storeProduct);
     //set visibility of pup up to visible
     document.getElementById("popUp-container").style.visibility = "visible";
-    finalResult.innerHTML = "You lost! You bought the wrong product! Try again!";
-    tryAgain.addEventListener("click", startGame);
+    finalResult.innerHTML = "You lost!<br> You bought the wrong product! Try again!";
+    tryAgain.addEventListener("click", hidePopUp);
   } else if (chosenNum !== randomNo && myProduct === storeProduct) {
     lose.play();
-    console.log(randomNo);
-    console.log(chosenNum);
-    console.log(myProduct);
-    console.log(storeProduct);
     //set visibility of pup up to visible
     document.getElementById("popUp-container").style.visibility = "visible";
-    finalResult.innerHTML = "You lost! You had the right product but the wrong number!";
-    tryAgain.addEventListener("click", startGame);
+    finalResult.innerHTML = "You lost!<br> You had the right product but the wrong number!";
+    tryAgain.addEventListener("click", hidePopUp);
   } else if (chosenNum !== randomNo && myProduct !== storeProduct) {
     lose.play();
-    console.log(randomNo);
-    console.log(chosenNum);
-    console.log(myProduct);
-    console.log(storeProduct);
     //set visibility of pup up to visible
     document.getElementById("popUp-container").style.visibility = "visible";
-    finalResult.innerHTML = "You lost! You called the wrong number and got the wrong product!";
-    tryAgain.addEventListener("click", startGame);
+    finalResult.innerHTML = "You lost! <br> You called the wrong number and got the wrong product!";
+    tryAgain.addEventListener("click", hidePopUp);
   }
   return chosenNum, randomNo, myProduct, storeProduct;
 };
 
 //gets time left and store it as points
 let callStore = function () {
-  console.log("im inside callStore");
   chosenNum = parseInt(document.getElementById("chosenNum").value);
   randomNo = myGame.randomPhoneNum;
   myProduct = myGame.shopListProduct.src;
   storeProduct = productTv.src;
+  timeLeft = document.getElementById("time-left").innerHTML;
   mainSong.pause();
   //callback function to call store
   calling.play();
@@ -180,20 +160,18 @@ let callStore = function () {
   check = setTimeout(function () {
   //if winning - add points
   if (chosenNum === randomNo && myProduct === storeProduct) {
-    //click the button to get  timeleft
-    totalPoints.textContent =
-      parseInt(totalPoints.textContent) +
-      parseInt(document.getElementById("time-left").textContent);
+    //click the button stores timeleft
+    let pointsNum = parseInt(totalPoints.textContent);
+    pointsNum = pointsNum + parseInt(timeLeft);
+    //show points in pop up message
+    document.getElementById("pop-points").textContent = pointsNum;
     //stop game
     clearInterval(gameTimer); 
     startGameBtn.textContent = "NEW GAME";
     document.getElementById("btn-start-game").style.visibility = "visible";
     //turn tv off
     let tv = document.getElementById("tv-container");
-    tv.style.backgroundImage =
-      "url('https://amandaciliberto.github.io/DialUp/images/tv-off.png')";
-    //reset shopProduct
-    //shopProduct.src = "";
+    tv.style.backgroundImage = "url('https://amandaciliberto.github.io/DialUp/images/tv-off.png')";
     //reset random phone number
     randomPhone.textContent = "";
     //reset input value
@@ -202,26 +180,21 @@ let callStore = function () {
     startGameBtn.addEventListener("click", startGame);
     //set visibility of pup up to visible
     document.getElementById("popUp-container").style.visibility = "visible";
-    finalResult.innerHTML =
-      "You won! You called the right number and got the right product";
+    finalResult.innerHTML = "You won! <br> You called the right number and got the right product";
     win.play();
+    tryAgain.innerText = "Next Game";
     tryAgain.addEventListener("click", hidePopUp);
   } else {
     //stop game
     //stop the timer
-    clearInterval(gameTimer);/* 
-    document.getElementById("time-left").innerHTML = "0"; */
+    clearInterval(gameTimer);
     startGameBtn.textContent = "NEW GAME";
     document.getElementById("btn-start-game").style.visibility = "visible";
     //turn tv off
-    //turn on tv
     let tv = document.getElementById("tv-container");
-    tv.style.backgroundImage =
-      "url('https://amandaciliberto.github.io/DialUp/images/tv-off.png')";
+    tv.style.backgroundImage = "url('https://amandaciliberto.github.io/DialUp/images/tv-off.png')";
     //get result
     getResult();
-    //reset shopProduct
-    //shopProduct.src = "";
     //reset random phone number
     randomPhone.textContent = "";
     //reset input value
@@ -242,6 +215,8 @@ const init = function () {
   input.setAttribute("placeholder", "Phone Number...");
 
   input.setAttribute("id", "chosenNum");
+
+  input.disabled = true;
 
   const btn = document.createElement("button");
 
@@ -273,7 +248,6 @@ let myIndex = 0;
 //changes the channel on the tv
 let changeChannel = function () {
   clicking.play();
-  console.log("changing channel");
   //loop through products array
   productTv.src = myGame.products[myIndex].src;
   myIndex = (myIndex + 1) % myGame.products.length;
@@ -281,9 +255,7 @@ let changeChannel = function () {
   //create another randomized phone number
   myGame.randomPhoneNum = Math.floor(10000000 + Math.random() * 90000000);
   randomPhone.textContent = "Call Now! " + myGame.randomPhoneNum;
-  console.log(randomPhone.textContent);
 
-  console.log(productTv);
   return productTv;
 };
 
@@ -293,13 +265,12 @@ startGameBtn.addEventListener("click", startGame);
 
 //starts the game
 function startGame() {
+  myGame = new PhoneGame();
   //starts the timer
   timer();
   //make the button dissappear once the game starts
   document.getElementById("btn-start-game").style.visibility = "hidden";
-  console.log("i'm inside the startGame");
   //turn on tv
-  let tv = document.getElementById("tv-container");
   tv.style.backgroundImage = "url('https://amandaciliberto.github.io/DialUp/images/tv.png')";
   //show shopping list product
   shopProduct.src = myGame.shopListProduct.src;

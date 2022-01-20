@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dial Up Game</title>
-    <link rel="stylesheet" href="https://amandaciliberto.github.io/DialUp/style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div id="header">
@@ -14,7 +14,6 @@
         </h1>
         <p>Points: <span id="points">0</span></p>
     </div>
-    
     <div id="left-panel">
         <div id="shopping-list">
         <h2>Shopping List</h2>
@@ -24,10 +23,9 @@
             <p id="random-phone"><br><span id="r-num"></span></p>
             <img id="tv-product" src="https://amandaciliberto.github.io/DialUp/images/toaster.png" alt="store product" >
             <button id="change-channel"><img src="https://amandaciliberto.github.io/DialUp/images/channelUp.png" alt="change channel up"></button> 
-            <button id="btn-start-game">NEW GAME</button>
+            <button id="btn-start-game">START GAME</button>
         </div>
     </div>
-        
     <div id="right-panel">
         <div id="instructions-timer">
             <div id="instructions">
@@ -45,15 +43,14 @@
         </div>
         <input type="image" id="call-now" src="https://amandaciliberto.github.io/DialUp/images/callNow.png"></input>
     </div>
-    
-    <script src="https://amandaciliberto.github.io/DialUp/js/RotaryDial.js"></script>
-    <script src="https://amandaciliberto.github.io/DialUp/js/main.js"></script>
-    
     <div id="popUp-container">
         <div id="pop-up">
             <p id="result-text">'empty'</p>
+            <p>Points: <span id="pop-points">0</span></p>
             <button id="try-again">Try Again</button>
         </div>
     </div>
+    <script src="https://amandaciliberto.github.io/DialUp/js/RotaryDial.js"></script>
+    <script src="https://amandaciliberto.github.io/DialUp/js/main.js"></script>
 </body>
 </html>
