@@ -76,7 +76,7 @@ function hidePopUp() {
 
 //10s timer function
 const timer = function () {
-  var timeleft = 15;
+  var timeleft = 50;
   gameTimer = setInterval(function () {
     if (timeleft < 0) {
       clearInterval(gameTimer);
