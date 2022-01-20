@@ -20,17 +20,12 @@ let tv = document.getElementById("tv-container");
 let timeLeft;
 
 // sound effects
-let mainSong = new Audio(
-  "https://amandaciliberto.github.io/DialUp/sound/main-song.mp3"
-);
-let clicking = new Audio(
-  "https://amandaciliberto.github.io/DialUp/sound/btnClick.mp3"
-);
+let mainSong = new Audio("https://amandaciliberto.github.io/DialUp/sound/main-song.mp3");
+let clicking = new Audio("https://amandaciliberto.github.io/DialUp/sound/btnClick.mp3");
 let lose = new Audio("https://amandaciliberto.github.io/DialUp/sound/lose.mp3");
 let win = new Audio("https://amandaciliberto.github.io/DialUp/sound/win.mp3");
-let calling = new Audio(
-  "https://amandaciliberto.github.io/DialUp/sound/calling.mp3"
-);
+let calling = new Audio("https://amandaciliberto.github.io/DialUp/sound/calling.mp3");
+let dialing = new Audio("https://amandaciliberto.github.io/DialUp/sound/dialing.mp3");
 
 //variables for win condition
 let randomNo;
@@ -174,7 +169,7 @@ let callStore = function () {
   randomNo = myGame.randomPhoneNum;
   myProduct = myGame.shopListProduct.src;
   storeProduct = productTv.src;
-  timeLeft = document.getElementById("time-left").innerHTML;
+  let pointsAll = document.getElementById("time-left").innerHTML;
   mainSong.pause();
   //callback function to call store
   calling.play();
@@ -184,17 +179,9 @@ let callStore = function () {
   check = setTimeout(function () {
     //if winning - add points
     if (chosenNum === randomNo && myProduct === storeProduct) {
-
-      totalPoints.textContent = parseInt(totalPoints.textContent) + parseInt(timeLeft);
-      console.log(totalPoints.textContent);
-      console.log('timeLeft :>> ', timeLeft);
-      //click the button stores timeleft
-       let pointsNum = parseInt(totalPoints.textContent);
-       pointsNum = pointsNum + parseInt(timeLeft);
-      //console.log(pointsNum);
+      totalPoints.textContent = parseInt(totalPoints.textContent) + parseInt(pointsAll);
       //show points in pop up message
-      document.getElementById("pop-points").textContent = pointsNum;
-      //totalPoints.textContent = pointsNum;
+      document.getElementById("pop-points").textContent = pointsAll;
       //stop game
       clearInterval(gameTimer);
       startGameBtn.textContent = "NEW GAME";
@@ -210,7 +197,6 @@ let callStore = function () {
       //run Start game again by pressing 'start game' button
       startGameBtn.addEventListener("click", startGame);
       //set visibility of pup up to visible
-      // totalPoints.textContent = pointsNum;
       document.getElementById("popUp-container").style.visibility = "visible";
       finalResult.innerHTML =
         "You won! <br> You called the right number and got the right product";

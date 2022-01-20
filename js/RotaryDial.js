@@ -205,7 +205,6 @@ class RotaryDial {
     this.clicking = true;
 
     //dialing sound effect
-    let dialing = new Audio("../sound/dialing.mp3");
     dialing.play();
   }
 
