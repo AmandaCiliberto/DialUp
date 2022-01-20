@@ -1,5 +1,5 @@
 # DialUP
-![game screenshot] (https://amandaciliberto.github.io/DialUp/dialUp_img.png)
+![game screenshot](https://amandaciliberto.github.io/DialUp/dialUp_img.png)
 
 ## Introduction
 
