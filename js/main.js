@@ -17,10 +17,10 @@ let tryAgain = document.getElementById("try-again");
 
 // sound
 let mainSong = new Audio("https://amandaciliberto.github.io/DialUp/sound/main-song.mp3"); 
-let clicking = new Audio("../sound/btnClick.mp3");
-let lose = new Audio("../sound/lose.mp3");
-let win = new Audio("../sound/win.mp3");
-let calling = new Audio("../sound/calling.mp3");
+let clicking = new Audio("https://amandaciliberto.github.io/DialUp/sound/btnClick.mp3");
+let lose = new Audio("https://amandaciliberto.github.io/DialUp/sound/lose.mp3");
+let win = new Audio("https://amandaciliberto.github.io/DialUp/sound/win.mp3");
+let calling = new Audio("https://amandaciliberto.github.io/DialUp/sound/calling.mp3");
 
 //variables
 let randomNo;
