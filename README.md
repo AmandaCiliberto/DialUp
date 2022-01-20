@@ -1,5 +1,4 @@
 # DialUP
-![Image] (https://amandaciliberto.github.io/DialUp/images/DialUp.png)
 
 ## Introduction
 

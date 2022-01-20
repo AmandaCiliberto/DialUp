@@ -203,6 +203,10 @@ class RotaryDial {
     this.number = null;
 
     this.clicking = true;
+
+    //dialing sound effect
+    let dialing = new Audio("../sound/dialing.mp3");
+    dialing.play();
   }
 
   getDist(x1, y1, x2, y2) {
